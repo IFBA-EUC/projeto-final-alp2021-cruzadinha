@@ -19,6 +19,29 @@ def dica(numero_escolhido):
     print("\nA dica é:", lista_dicas_nivel1[6])
   if numero_escolhido == 8:
     print("\nA dica é:", lista_dicas_nivel1[7])
+    
+def paisnivel1(numero_escolhido):
+  print("\n-------------------------------------"
+  "\n|   |   |   |   |   |   |   |   |   |"
+  "\n-------------------------------------")
+  argentina = input("\nQual é o país? ")
+  contador = 1
+  while contador < 4:
+    if argentina == "ARGENTINA":
+      print("\n-------------------------------------"
+      "\n| A | R | G | E | N | T | I | N | A |"
+      "\n-------------------------------------"
+      "\n"
+      "Parabéns, você acertou! :)")
+      break
+    else:
+      if contador == 1:
+        argentina = input("\nVixe, você errou. Tente novamente (2 tentativas restantes): ")
+      if contador == 2:
+        argentina = input("\nVixe, você errou. Tente novamente (última tentativa restante): ")
+      if contador == 3:
+        print("\nQue pena, não foi dessa vez! :(")
+    contador = contador + 1
 
 print("SEJAM BEM VINDOS AO JOGO CRUZADINHA!"
 "\n"
@@ -38,3 +61,11 @@ lista_dicas_nivel1 = ["País onde Lionel Messi, jogador de futebol, nasceu.","É
 lista_dicas_nivel2 = ["Único país latino da América do Norte.", "Bolo de feijão, frito no azeite de dendê.", "Primeiro nome da Única atriz brasileira indicada ao prêmio Oscar.", "Jab, Jab, ele esquiva e finaliza com um gancho!", "Seu corpo é divido em cabeça, e tem transformação em quatro fases.", "Estrutura lógica que precisa de todas entradas verdadeiras para seu resultado também ser verdadeiro.", "Profissional que zela pela segurança, conforto e tranquilidade dos passageiros do transporte aéreo", "Maior festa de rua da Bahia."]
 lista_dicas_nivel3 = ["País europeu que possui o formato de uma bota.", "Feito de farinha de trigo, camarão e leite de coco.", "Primeiro nome do Cantor brasileiro de MPB, dono da música 'Apesar de você' escrita em 1970, como crítica a falta de liberdade durante a ditadura militar no Brasil", "Muita calma nessa hora! ele precisa estabilizar seu equilibrio...", "Tem bico forte, língua carnosa e uma cauda longa em forma de espada.", "Fornece funções matématicas que para o seu uso é preciso ser chamada na biblioteca.", "Profissional responsável pelo estudo das mais variadas formas de vida existentes.", "Festa cristã que celebra o nascimento de João Batista."]  
 
+player1 = input("\nDigite o nome do Player 1: ")
+player2 = input("Digite o nome do Player 2: ")
+
+sorteio = random.randint(1,2)
+if sorteio == 1:
+  print(f"\nO primeiro a jogar é {player1}!")
+else:
+  print(f"\nO primeiro a jogar é {player2}!")
