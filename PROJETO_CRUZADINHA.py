@@ -219,3 +219,89 @@ def profissaonivel1(numero_escolhido):
       if contador == 3:
         print("\nQue pena, não foi dessa vez! :(")
     contador = contador + 1
+
+    def datasnivel1 (numero_escolhido):
+  if numero_escolhido == 8:
+    print("\nA dica é:", lista_dicas_nivel1[7])
+  print ("\n-------------------"
+  "\n|   |   |   |   |   |"
+  "\n---------------------")
+  natal = input ("\nQual é a data comemorativa?")
+  contador = 1
+  while contador  <  4 :
+    if natal  ==  "NATAL" :
+      print("\n---------------------"
+      "\n| N | A | T | A | L |"
+      "\n--------------------"
+      "\n"
+      "\nParabéns, você acertou! :)")
+      break
+    else:
+      if contador  ==  1 :
+        natal  =  input("\nVixe, você errou. Tente novamente (2 restantes): ")
+      if contador  ==  2 :
+        natal =  input("\nVixe, você errou. Tente novamente (última tentativa restante): ")
+      if contador  ==  3 :
+        print("\nQue pena, não foi dessa vez! :(")
+    contador  =  contador  +  1
+ 
+def chamar_dica(numero_escolhido):
+  if numero_escolhido == 1:
+    paisnivel1(numero_escolhido)
+  if numero_escolhido == 2:
+    comidanivel1(numero_escolhido)
+  if numero_escolhido == 3:
+    famosobrnivel1(numero_escolhido)
+  if numero_escolhido == 4:
+    esportenivel1(numero_escolhido)
+  if numero_escolhido == 5:
+    animalnivel1(numero_escolhido)   
+  if numero_escolhido == 6:
+    repeticaonivel1(numero_escolhido)
+  if numero_escolhido == 7:
+    profissaonivel1(numero_escolhido)
+  if numero_escolhido == 8:
+    datasnivel1(numero_escolhido) 
+ 
+  print("SEJAM BEM VINDOS AO JOGO CRUZADINHA!"
+"\n"
+"\nREGRAS:"
+"\n- O jogo precisa de 2 jogadores;"
+"\n- O primeiro a jogar será sorteado pelo computador;"
+"\n- Cada jogador terá a oportunidade de escolher um nome para adivinhar de acordo com o número correspondente;"
+"\n- Só será possível escolher uma palavra que ainda não foi descoberta;"
+"\n- A dica só aparecerá após a escolha do número;"
+"\n- Cada jogador possui 3 tentativas para descobrir cada palavra e em caso de acerto, ganhará 1 ponto;"
+"\n- O jogo possui 3 níveis e a dificuldade aumenta em cada um deles;"
+"\n- Todas as palavras devem ser escritas em letras MAIÚSCULAS, caso contrário, a mesma será considerada errada;"
+"\n- A vez é alternada em caso de acerto ou no fim da terceira tentativa;"
+"\n- Ganhará aquele que possuir mais pontos e em caso de empate, os dois jogadores serão os vencedores.")
+ 
+player1 = input("\nDigite o nome do Player 1: ") 
+player2 = input("Digite o nome do Player 2: ") 
+ 
+sorteio = random.randint(1,2)
+if sorteio == 1:
+  print(f"\nO primeiro a jogar é {player1}!")
+  jogador1 = True
+  jogador2 = False
+else:
+  print(f"\nO primeiro a jogar é {player2}!")
+  jogador1 = False
+  jogador2 = True
+ 
+contador = 1
+while contador < 100000000:
+  numero_escolhido = int(input("\nEscolha o número da palavra (de 1 a 8): "))
+  while numero_escolhido > 8 or numero_escolhido < 1:
+    numero_escolhido = int(input("\nO número escolhido é inválido. Tente novamente (de 1 a 8): "))
+  chamar_dica(numero_escolhido)
+  if jogador1 == True:
+    print(f"\nO próximo a jogar é {player2}!")
+    jogador2 = True
+    jogador1 = False
+  else:
+    print(f"\nO próximo a jogar é {player1}!")
+    jogador1 = True
+    jogador2 = False
+  contador = contador + 1
