@@ -6,6 +6,7 @@ lista_dicas_nivel3 = ["País europeu que possui o formato de uma bota.", "Feito 
 lista_numeros_disponiveis = [1,2,3,4,5,6,7,8]
 lista_pontos_jogador1 = []
 lista_pontos_jogador2 = []
+numero_escolhido = 1
 
 def paisnivel1(numero_escolhido):
   print("\nA dica é:", lista_dicas_nivel1[0])
@@ -124,7 +125,7 @@ def famosobrnivel1 (numero_escolhido):
       if contador == 1 :
         bruna = input ("\nVixe, você errou. Tente novamente (2 tentativas restantes): ")
       if contador == 2 :
-        bruna = input ("\nVixe, você errou. Tente novamente (última tentativa restante ): ")
+        beruna = input ("\nVixe, você errou. Tente novamente (última tentativa restante ): ")
       if contador == 3 : 
         print ("\nQue pena, não foi dessa vez! :(")  
     contador = contador + 1
@@ -362,84 +363,87 @@ print("SEJAM BEM VINDOS AO JOGO CRUZADINHA!"
 "\n- A vez é alternada em caso de acerto ou no fim da terceira tentativa;"
 "\n- Ganhará aquele que possuir mais pontos e em caso de empate, os dois jogadores serão os vencedores.")
 
-player1 = input("\nDigite o nome do Player 1: ") 
-player2 = input("Digite o nome do Player 2: ") 
+retorno = 1
+while retorno == 1:
+  print("\nNÍVEL 1 = FÁCIL    NÍVEL 2 = MEDIANO   NÍVEL 3 = DIFÍCIL")
+  nivel = int(input("\nQual nível vocês desejam jogar? (1, 2 ou 3): "))
+  while nivel != 1 and nivel != 2 and nivel != 3:
+    nivel = int(input("\nNível indisponível. Qual nível vocês desejam jogar? (1, 2 ou 3): "))
+  if nivel == 1:
+    player1 = input("\nDigite o nome do Player 1: ") 
+    player2 = input("Digite o nome do Player 2: ") 
 
-sorteio = random.randint(1,2)
-if sorteio == 1:
-  jogador1 = True
-else:
-  jogador1 = False
+    sorteio = random.randint(1,2)
+    if sorteio == 1:
+      jogador1 = True
+    else:
+      jogador1 = False
 
-print("\nTEMAS:"
-"\n1 -> PAÍSES"
-"\n2 -> COMIDAS"
-"\n3 -> FAMOSOS BRASILEIROS"
-"\n4 -> ESPORTES"
-"\n5 -> ANIMAIS"
-"\n6 -> CONTEÚDOS DE A.L.P.(PYTHON)"
-"\n7 -> PROFISSÕES"
-"\n8 -> DATAS COMEMORATIVAS")
+    print("\n                                                        -----"
+    "\n                                                        | 6 |"
+    "\n                            -------------------------   |---|   -----"
+    "\n                            | 2 | 2 | 2 | 2 | 2 | 2 |   | 6 |   | 5 |"
+    "\n                            ----|---|---|---|---|---|---|---|---|---|"
+    "\n                                | 1 | 1 | 1 | 1 | 1 | 1 |1/6| 1 |1/5|         TEMAS:"
+    "\n                                ------------------------|---|---|---|         1 -> PAÍSES"
+    "\n                                                        | 6 |   | 5 |         2 -> COMIDAS"
+    "\n                            ----------------------------|---|   |---|         3 -> FAMOSOS BRASILEIROS"
+    "\n                            |3/4| 4 | 4 | 4 | 4 | 4 | 4 |4/6|   | 5 |         4 -> ESPORTES"
+    "\n                            |---|----------------------------   -----         5 -> ANIMAIS"
+    "\n                            | 3 |                                             6 -> CONTEÚDOS DE A.L.P.(PYTHON)"
+    "\n                            |---|                                             7 -> PROFISSÕES"
+    "\n                            | 3 |                                             8 -> DATAS COMEMORATIVAS" 
+    "\n                            |---|----------------"
+    "\n                            |3/8| 8 | 8 | 8 | 8 |"
+    "\n----------------------------|---|----------------"
+    "\n| 7 | 7 | 7 | 7 | 7 | 7 | 7 |3/7| 7 | 7 | 7 |"
+    "\n---------------------------------------------")
 
-print("\n\t\t\t\t\t\t        -----"
-"\n\t\t\t\t\t\t        | 6 |"
-"\n\t\t\t    -------------------------   |---|   -----"
-"\n\t\t\t    | 2 | 2 | 2 | 2 | 2 | 2 |   | 6 |   | 5 |"
-"\n\t\t\t    ----|---|---|---|---|---|---|---|---|---|"
-"\n\t\t\t        | 1 | 1 | 1 | 1 | 1 | 1 |1/6| 1 |1/5|"
-"\n\t\t\t        ------------------------|---|---|---|"
-"\n\t\t\t\t\t\t        | 6 |   | 5 |"
-"\n\t\t\t    ----------------------------|---|   |---|"
-"\n\t\t\t    |3/4| 4 | 4 | 4 | 4 | 4 | 4 |4/6|   | 5 |"
-"\n\t\t\t    |---|----------------------------   -----"
-"\n\t\t\t    | 3 |"
-"\n\t\t\t    |---|"
-"\n\t\t\t    | 3 |"
-"\n\t\t\t    |---|----------------"
-"\n\t\t\t    |3/8| 8 | 8 | 8 | 8 |"
-"\n----------------------------|---|----------------"
-"\n| 7 | 7 | 7 | 7 | 7 | 7 | 7 |3/7| 7 | 7 | 7 |"
-"\n---------------------------------------------")
+    while lista_numeros_disponiveis != []:
+      if jogador1 == True:
+        print(f"\n{player2}, agora é sua vez!")
+        jogador1 = False
+      else:
+        print(f"\n{player1}, agora é sua vez!")
+        jogador1 = True
+      numero_escolhido = int(input("\nEscolha o número da palavra : "))
+      while numero_escolhido not in lista_numeros_disponiveis:
+        numero_escolhido = int(input("\nO número escolhido é inválido. Tente novamente (de 1 a 8): "))
+      chamar_dica(numero_escolhido)
+    print("\nPARABÉNS, VOCÊS TERMINARAM O NÍVEL 1!"
+    "\n                                                        -----"
+    "\n                                                        | W |"
+    "\n                            -------------------------   |---|   -----"
+    "\n                            | C | U | S | C | U | Z |   | H |   | G |"
+    "\n                            ----|---|---|---|---|---|---|---|---|---|"
+    "\n                                | A | R | G | E | N | T | I | N | A |"
+    "\n                                ------------------------|---|---|---|"
+    "\n                                                        | L |   | T |"
+    "\n                            ----------------------------|---|   |---|"
+    "\n                            | B | A | S | Q | U | E | T | E |   | O |"
+    "\n                            |---|----------------------------   -----"
+    "\n                            | R |"
+    "\n                            |---|"
+    "\n                            | U |"
+    "\n                            |---|----------------"
+    "\n                            | N | A | T | A | L |"
+    "\n----------------------------|---|----------------"
+    "\n| P | R | O | G | R | A | M | A | D | O | R |"
+    "\n---------------------------------------------")
 
-while lista_numeros_disponiveis != []:
-  if jogador1 == True:
-    print(f"\n{player2}, agora é sua vez!")
-    jogador1 = False
+    pontosjogador1 = lista_pontos_jogador1.count(1)
+    pontosjogador2 = lista_pontos_jogador2.count(1)
+    print (f"\n{player1}, você obteve {pontosjogador1} pontos."
+    f"\n{player2}, você obteve {pontosjogador2} pontos.")
+    if pontosjogador1 > pontosjogador2:
+      print(f"\n{player1} foi o vencedor!!!")
+    elif pontosjogador1 == pontosjogador2:
+      print(f"\nDeu empate. {player1} e {player2} venceram!!!)")
+    else:
+      print(f"\n{player2} foi o vencedor!!!")
+    retorno = input("Desejam jogar novamente? 1 para SIM, 2 para NÃO: ")
+  elif nivel == 2:
+    print("Ainda não criado")
   else:
-    print(f"\n{player1}, agora é sua vez!")
-    jogador1 = True
-  numero_escolhido = int(input("\nEscolha o número da palavra : "))
-  while numero_escolhido not in lista_numeros_disponiveis:
-    numero_escolhido = int(input("\nO número escolhido é inválido. Tente novamente (de 1 a 8): "))
-  chamar_dica(numero_escolhido)
-print("\nPARABÉNS, VOCÊS TERMINARAM O NÍVEL 1!"
-"\n\t\t\t\t\t\t        -----"
-"\n\t\t\t\t\t\t        | W |"
-"\n\t\t\t    -------------------------   |---|   -----"
-"\n\t\t\t    | C | U | S | C | U | Z |   | H |   | G |"
-"\n\t\t\t    ----|---|---|---|---|---|---|---|---|---|"
-"\n\t\t\t        | A | R | G | E | N | T | I | N | A |"
-"\n\t\t\t        ------------------------|---|---|---|"
-"\n\t\t\t\t\t\t        | L |   | T |"
-"\n\t\t\t    ----------------------------|---|   |---|"
-"\n\t\t\t    | B | A | S | Q | U | E | T | E |   | O |"
-"\n\t\t\t    |---|----------------------------   -----"
-"\n\t\t\t    | R |"
-"\n\t\t\t    |---|"
-"\n\t\t\t    | U |"
-"\n\t\t\t    |---|----------------"
-"\n\t\t\t    | N | A | T | A | L |"
-"\n----------------------------|---|----------------"
-"\n| P | R | O | G | R | A | M | A | D | O | R |"
-"\n---------------------------------------------")
-
-pontosjogador1 = lista_pontos_jogador1.count(1)
-pontosjogador2 = lista_pontos_jogador2.count(1)
-print (f"\n{player1}, você obteve {pontosjogador1} pontos."
-f"\n{player2}, você obteve {pontosjogador2} pontos.")
-if pontosjogador1 > pontosjogador2:
-  print(f"\n{player1} foi o vencedor!!!")
-elif pontosjogador1 == pontosjogador2:
-  print(f"\nDeu empate. {player1} e {player2} venceram!!!)")
-else:
-  print(f"\n{player2} foi o vencedor!!!")
+    print("Ainda não criado")
+print("\nEsperamos que tenham gostado do jogo. Até mais! <3")
